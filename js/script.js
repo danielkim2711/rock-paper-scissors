@@ -1,32 +1,52 @@
-// User enters either "Rock", "Paper", "Scissors"
-// const playerSelection = prompt(
-//   'Please choose "Rock", "Paper", "Scissors".'
-// ).toLowerCase();
-const computerSelection = computerPlay();
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
 
-// Computer selects either "Rock", "Paper", "Scissors"
-function computerPlay() {
-  let input = Math.floor(Math.random() * 3) + 1;
+const playerScore = document.querySelector('.player-score');
+const computerScore = document.querySelector('.computer-score');
 
-  if (input === 1) return 'rock';
-  else if (input === 2) return 'paper';
-  else return 'scissors';
-}
+const result = document.querySelector('.result');
 
-// If user plays "Rock" and computer plays "Scissors", player wins
-// If user plays "Paper" and computer plays "Rock", player wins
-// If user plays "scissors" and computer plays "paper", player wins
-// If both play the same hand, it's a draw, otherwise computer wins
-function playRound(playerSelection, computerSelection) {
+function playRound(e) {
+  // User choose either "Rock", "Paper", "Scissors"
+  const playerSelection = e.target.classList.value;
+
+  // Computer choose either "Rock", "Paper", "Scissors"
+  let computerInput = Math.floor(Math.random() * 3) + 1;
+  let computerSelection;
+
+  if (computerInput === 1) computerSelection = 'rock';
+  else if (computerInput === 2) computerSelection = 'paper';
+  else computerSelection = 'scissors';
+
+  // Define rock, paper and scissors logic and score
   if (playerSelection === computerSelection) {
-    console.log('You draw');
+    result.textContent = "It's a draw";
+    return;
   } else if (
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
     (playerSelection === 'paper' && computerSelection === 'rock') ||
     (playerSelection === 'scissors' && computerSelection === 'paper')
   ) {
-    console.log('You won');
-  } else console.log('You lost');
+    result.textContent = 'You won!';
+    playerScore.textContent++;
+  } else {
+    result.textContent = 'You lost!';
+    computerScore.textContent++;
+  }
+
+  // When score hits 5, end the game
+  if (playerScore.textContent == 5) {
+    alert('Congratulations! You won!');
+    playerScore.textContent = 0;
+    computerScore.textContent = 0;
+  } else if (computerScore.textContent == 5) {
+    alert('Oops, you lost! Better luck next time!');
+    playerScore.textContent = 0;
+    computerScore.textContent = 0;
+  }
 }
 
-playRound(playerSelection, computerSelection);
+rock.addEventListener('click', playRound);
+paper.addEventListener('click', playRound);
+scissors.addEventListener('click', playRound);
