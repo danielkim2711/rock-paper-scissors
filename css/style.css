@@ -49,7 +49,7 @@ section {
 }
 
 .text-container {
-  margin: 100px;
+  margin: 70px;
 }
 
 .text-container h2 {
@@ -63,7 +63,7 @@ section {
 /* Button */
 
 .game-container {
-  margin-bottom: 100px;
+  margin-bottom: 70px;
   height: 200px;
   display: flex;
   justify-content: center;
@@ -79,17 +79,21 @@ button {
   padding: 20px 30px;
 }
 
-/* Result */
+/* Scoreboard */
 
-.result {
+.scoreboard {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.result p {
+.scoreboard p {
   font-size: 48px;
-  margin: 0 100px;
+  margin: 0 120px 30px;
+}
+
+.result {
+  font-size: 36px;
 }
 
 /* Footer */
