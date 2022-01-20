@@ -1,7 +1,7 @@
 // User enters either "Rock", "Paper", "Scissors"
-const playerSelection = prompt(
-  'Please choose "Rock", "Paper", "Scissors".'
-).toLowerCase();
+// const playerSelection = prompt(
+//   'Please choose "Rock", "Paper", "Scissors".'
+// ).toLowerCase();
 const computerSelection = computerPlay();
 
 // Computer selects either "Rock", "Paper", "Scissors"
